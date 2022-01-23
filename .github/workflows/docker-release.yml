@@ -23,6 +23,7 @@ jobs:
           images: |
             rossf7/scaphandre
           tags: |
+            type=ref,event=branch
             type=semver,pattern={{version}}
       -
         name: Set up QEMU
@@ -44,5 +45,5 @@ jobs:
           context: .
           # Secrets are not passed for forked repos
           push: false
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: rossf7/scaphandre:${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
