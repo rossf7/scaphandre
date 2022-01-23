@@ -2,6 +2,9 @@ name: docker_release
 
 on:
   push:
+    branches:
+      - 'dev'
+      - 'main'
     tags:
       - 'v*.*.*'
 
