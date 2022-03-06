@@ -1,3 +1,6 @@
+name: docker_release
+
+on:
   push:
     branches: [ main, dev ]
     paths-ignore:
