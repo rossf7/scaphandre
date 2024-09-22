@@ -1,6 +1,6 @@
 image:
   name: hubblo/scaphandre
-  tag: {{ .Chart.Version }}
+  tag: ""
 
 port: 8080
 
