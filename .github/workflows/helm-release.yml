@@ -24,6 +24,8 @@ jobs:
       - name: Login to DockerHub
         run: |
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | helm registry login registry-1.docker.io --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin 
+        env:
+          HELM_EXPERIMENTAL_OCI: 1
       - name: Extract version from Git tag
         id: get_version
         run: |
