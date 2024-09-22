@@ -34,5 +34,5 @@ jobs:
         helm package helm/scaphandre --version ${{ steps.get_version.outputs.VERSION }} --app-version ${{ steps.get_version.outputs.VERSION }}
     - name: Save and Push Helm Chart as OCI Artifact
       run: |
-        helm chart save ./scaphandre-${{ steps.get_version.outputs.VERSION }}.tgz docker.io/${{ secrets.DOCKER_USERNAME }}/scaphandre:${{ steps.get_version.outputs.VERSION }}
-        helm chart push docker.io/${{ secrets.DOCKER_USERNAME }}/scaphandre:${{ steps.get_version.outputs.VERSION }}
+        helm chart save ./scaphandre-${{ steps.get_version.outputs.VERSION }}.tgz docker.io/${{ secrets.DOCKERHUB_USERNAME }}/scaphandre:${{ steps.get_version.outputs.VERSION }}
+        helm chart push docker.io/${{ secrets.DOCKERHUB_USERNAME }}/scaphandre:${{ steps.get_version.outputs.VERSION }}
