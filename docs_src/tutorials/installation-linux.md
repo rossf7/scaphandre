@@ -10,12 +10,13 @@ To quickly run scaphandre in your terminal you may use [docker](https://www.dock
     docker run -v /sys/class/powercap:/sys/class/powercap -v /proc:/proc -ti hubblo/scaphandre stdout -t 15
 
 ## Debian/Ubuntu
-On Debian or Ubuntu, you can use the available `.deb` [package](https://github.com/barnumbirr/scaphandre-debian).
+On Debian or Ubuntu, you can use the available `.deb` [package for Debian Bullseye](https://github.com/hubblo-org/scaphandre/releases/download/v1.0.0/scaphandre_v1.0.0-deb11_amd64.deb) or the [package for Debian Bookworm](https://github.com/hubblo-org/scaphandre/releases/download/v1.0.0/scaphandre_v1.0.0-deb12_amd64.deb).
 
-    VERSION="1.0.0-1" ARCH="amd64" DIST="bookworm" && \
-    wget https://github.com/barnumbirr/scaphandre-debian/releases/download/v$VERSION/scaphandre_$VERSION\_$ARCH\_$DIST.deb && \
-    dpkg -i scaphandre_$VERSION\_$ARCH\_$DIST.deb && \
-    rm scaphandre_$VERSION\_$ARCH\_$DIST.deb
+    # For Debian Bookworm
+    VERSION="1.0.0" ARCH="amd64" DIST="deb12" && \
+    wget https://github.com/hubblo-org/scaphandre/releases/download/v${VERSION}/scaphandre_v${VERSION}-${DIST}_${ARCH}.deb && \
+    dpkg -i scaphandre_v${VERSION}\-${DIST}\_${ARCH}.deb && \
+    rm scaphandre_v${VERSION}\-${DIST}\_${ARCH}.deb
 
 ## Run the binary
 Once you downloaded or built a binary, you'd run:
