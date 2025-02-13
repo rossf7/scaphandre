@@ -24,17 +24,13 @@ jobs:
       - name: Login to DockerHub
         run: |
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | helm registry login registry-1.docker.io --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin 
-        env:
-          HELM_EXPERIMENTAL_OCI: 1
       - name: Extract version from Git tag
         id: get_version
         run: |
           echo "::set-output name=VERSION::${GITHUB_REF#refs/tags/v}"
       - name: Package Helm Chart
         run: |
-          helm package helm/scaphandre --version ${{ steps.get_version.outputs.VERSION }} --app-version ${{ steps.get_version.outputs.VERSION }}
+          helm package helm/scaphandre --version ${{ steps.get_version.outputs.VERSION }}
       - name: Push Helm Chart as OCI Artifact
         run: |
           helm push ./scaphandre-${{ steps.get_version.outputs.VERSION }}.tgz oci://registry-1.docker.io/${{ secrets.DOCKERHUB_USERNAME }}
-        env:
-          HELM_EXPERIMENTAL_OCI: 1
