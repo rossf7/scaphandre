@@ -27,7 +27,7 @@ jobs:
       - name: Extract version from Git tag
         id: get_version
         run: |
-          echo "::set-output name=VERSION::${GITHUB_REF#refs/tags/v}"
+          echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
       - name: Package Helm Chart
         run: |
           helm package helm/scaphandre --version ${{ steps.get_version.outputs.VERSION }}
